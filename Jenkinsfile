@@ -31,7 +31,7 @@ pipeline {
             }
             steps {
                 script {
-                    withDockerRegistry(credentialsId: 'DOCKER_HUB_LOGIN', url: 'https://hub.docker.com/r/ajaygaharana1/edureka_project/tags') {
+                    withDockerRegistry(credentialsId: 'DOCKER_HUB_LOGIN', url: 'https://hub.docker.com/r/ajaygaharana1') {
                         app.push("${env.BUILD_NUMBER}")
                         app.push("latest")
                     }
