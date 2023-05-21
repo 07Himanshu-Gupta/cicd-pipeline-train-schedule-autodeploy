@@ -8,14 +8,16 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Running build automation'
-                sh './gradlew build --no-daemon'
-                archiveArtifacts artifacts: 'dist/trainSchedule.zip'
                 script {
             try {
                 build job: 'system-check-flow'
             } catch (err) {
                 echo err.getMessage()
             }
+        }
+                sh './gradlew build --no-daemon'
+                archiveArtifacts artifacts: 'dist/trainSchedule.zip'
+               
         }
         echo currentBuild.result
             }
