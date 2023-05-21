@@ -14,7 +14,7 @@ pipeline {
             } catch (err) {
                 echo err.getMessage()
             }
-        }
+        
                 sh './gradlew build --no-daemon'
                 archiveArtifacts artifacts: 'dist/trainSchedule.zip'
                
