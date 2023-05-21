@@ -7,14 +7,7 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                echo 'Running build automation'
-                script {
-            try {
-                build job: 'system-check-flow'
-            } catch (err) {
-                echo err.getMessage()
-            }
-        
+                echo 'Running build automation'                      
                 sh './gradlew build --no-daemon'
                 archiveArtifacts artifacts: 'dist/trainSchedule.zip'
                
