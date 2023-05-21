@@ -12,8 +12,6 @@ pipeline {
                 archiveArtifacts artifacts: 'dist/trainSchedule.zip'
                
         }
-        echo currentBuild.result
-            }
         }
         stage('Build Docker Image') {
             when {
