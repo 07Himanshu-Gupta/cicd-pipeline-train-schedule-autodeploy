@@ -2,6 +2,7 @@ pipeline {
     agent any
     environment {
         //be sure to replace "bhavukm" with your own Docker Hub username
+        #DOCKER_IMAGE_NAME = "ajaygaharana1/train-schedule"
         DOCKER_IMAGE_NAME = "ajaygaharana1/train-schedule"
     }
     stages {
@@ -27,9 +28,9 @@ pipeline {
             }
         }
         stage('Push Docker Image') {
-            when {
-                branch 'master'
-            }
+            //when {
+              //  branch 'master'
+            //}
             steps {
                 script {
                     withDockerRegistry(credentialsId: 'DOCKER_HUB_LOGIN', url: 'https://hub.docker.com/r/ajaygaharana1') {
@@ -40,9 +41,9 @@ pipeline {
             }
         }
         stage('CanaryDeploy') {
-            when {
-                branch 'master'
-            }
+            //when {
+              //  branch 'master'
+            //}
             environment { 
                 CANARY_REPLICAS = 1
             }
@@ -55,9 +56,9 @@ pipeline {
             }
         }
         stage('DeployToProduction') {
-            when {
-                branch 'master'
-            }
+            //when {
+              //  branch 'master'
+            //}
             environment { 
                 CANARY_REPLICAS = 0
             }
