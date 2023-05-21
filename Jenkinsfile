@@ -10,6 +10,14 @@ pipeline {
                 echo 'Running build automation'
                 sh './gradlew build --no-daemon'
                 archiveArtifacts artifacts: 'dist/trainSchedule.zip'
+                script {
+            try {
+                build job: 'system-check-flow'
+            } catch (err) {
+                echo err.getMessage()
+            }
+        }
+        echo currentBuild.result
             }
         }
         stage('Build Docker Image') {
