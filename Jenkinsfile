@@ -44,12 +44,23 @@ pipeline {
                 }
             }
         
+        stage('Deploy to K8s') {
+  	   steps {
+    		
+    		sh 'kubectl apply -f train-schedule-kube-canary.yml'
+	   }
+	   post { 
+              always { 
+                cleanWs() 
+	      }
+	   }
+	}   
     
         
         stage('CanaryDeploy') {
-            //when {
-              //  branch 'master'
-            //}
+            when {
+              branch 'master'
+            }
             environment { 
                 CANARY_REPLICAS = 1
             }
@@ -62,9 +73,9 @@ pipeline {
             }
         }
         stage('DeployToProduction') {
-            //when {
-              //  branch 'master'
-            //}
+            when {
+                branch 'master'
+            }
             environment { 
                 CANARY_REPLICAS = 0
             }
