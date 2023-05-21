@@ -47,7 +47,7 @@ pipeline {
         stage('Deploy to K8s') {
   	   steps {
     		
-    		sh 'kubectl apply -f train-schedule-kube.yml  --context kubernetes'
+    		sh 'kubectl apply -f train-schedule-kube.yml  --context kubernetes --token $jenkins_token'
 	   }
 	   post { 
               always { 
