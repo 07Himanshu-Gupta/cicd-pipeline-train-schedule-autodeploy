@@ -36,13 +36,14 @@ pipeline {
                 script {
                     //withDockerRegistry(credentialsId: 'DOCKER_HUB_LOGIN', url: 'https://hub.docker.com/r/ajaygaharana1') {
                     //withDockerRegistry(credentialsId: 'DOCKER_HUB_LOGIN', url: 'https://hub.docker.com/r/ajaygaharana1/project2') {
-                    {                    
+                                        
                         app.push("${env.BUILD_NUMBER}")
                         app.push("latest")
                     }
                 }
             }
         }
+}
         stage('CanaryDeploy') {
             //when {
               //  branch 'master'
