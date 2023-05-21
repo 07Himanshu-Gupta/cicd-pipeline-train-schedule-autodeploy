@@ -47,7 +47,7 @@ pipeline {
         stage('Deploy to K8s') {
   	   steps {
     		
-    		sh 'kubectl apply -f train-schedule-kube-canary.yml'
+    		sh 'kubectl apply -f train-schedule-kube.yml'
 	   }
 	   post { 
               always { 
