@@ -32,9 +32,11 @@ pipeline {
               //  branch 'master'
             //}
             steps {
+                sh script: 'docker login -u ajaygaharana1 -p Password@1' 
                 script {
                     //withDockerRegistry(credentialsId: 'DOCKER_HUB_LOGIN', url: 'https://hub.docker.com/r/ajaygaharana1') {
-                    withDockerRegistry(credentialsId: 'DOCKER_HUB_LOGIN', url: 'https://hub.docker.com/r/ajaygaharana1/project2') {
+                    //withDockerRegistry(credentialsId: 'DOCKER_HUB_LOGIN', url: 'https://hub.docker.com/r/ajaygaharana1/project2') {
+                    {                    
                         app.push("${env.BUILD_NUMBER}")
                         app.push("latest")
                     }
