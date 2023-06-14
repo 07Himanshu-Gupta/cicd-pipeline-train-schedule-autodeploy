@@ -3,7 +3,7 @@ pipeline {
     environment {
         //be sure to replace "bhavukm" with your own Docker Hub username
         //DOCKER_IMAGE_NAME = "ajaygaharana1/train-schedule"
-        DOCKER_IMAGE_NAME = "ajaygaharana1/train-schedule"
+        DOCKER_IMAGE_NAME = "himanshugupta171020/train-schedule"
     }
     stages {
         stage('Build') {
@@ -33,7 +33,7 @@ pipeline {
               //  branch 'master'
             //}
             steps {
-                sh script: 'docker login -u ajaygaharana1 -p Password@1' 
+                sh script: 'docker login -u himanshugupta171020 -p Gh@17102077' 
                 script {
                     //withDockerRegistry(credentialsId: 'DOCKER_HUB_LOGIN', url: 'https://hub.docker.com/r/ajaygaharana1') {
                     //withDockerRegistry(credentialsId: 'DOCKER_HUB_LOGIN', url: 'https://hub.docker.com/r/ajaygaharana1/project2') {
